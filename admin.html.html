@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel</title>
+  <style>
+    body { font-family: Arial; background: #f5f5f5; padding: 20px; }
+    table { width: 80%; margin: auto; border-collapse: collapse; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: center; }
+    h2 { text-align: center; }
+  </style>
+</head>
+<body>
+  <h2>Admin Panel - View Submitted Fake Credentials</h2>
+  <table>
+    <thead>
+      <tr><th>Username</th><th>Password</th></tr>
+    </thead>
+    <tbody id="userData"></tbody>
+  </table>
+
+  <script>
+    const users = JSON.parse(localStorage.getItem("fakeUsers") || "[]");
+    const tbody = document.getElementById("userData");
+
+    users.forEach(user => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${user.username}</td><td>${user.password}</td>`;
+      tbody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
