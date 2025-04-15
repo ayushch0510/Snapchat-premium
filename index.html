@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Premium Access Login</title>
+  <style>
+    body { font-family: Arial; background: #f9f9f9; text-align: center; padding: 50px; }
+    form { background: #fff; padding: 20px; border-radius: 8px; display: inline-block; }
+    input { display: block; margin: 10px auto; padding: 8px; width: 80%; }
+    button { padding: 10px 20px; }
+    small { display: block; margin-top: 20px; color: red; }
+  </style>
+</head>
+<body>
+  <h2>Login to Claim 1 Week Premium</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Enter Username" required />
+    <input type="password" id="password" placeholder="Enter Password" required />
+    <button type="submit">Login</button>
+  </form>
+  <small>This is a simulated environment for educational purposes only.</small>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      let users = JSON.parse(localStorage.getItem("fakeUsers") || "[]");
+      users.push({ username: user, password: pass });
+      localStorage.setItem("fakeUsers", JSON.stringify(users));
+
+      window.location.href = "dashboard.html";
+    });
+  </script>
+</body>
+</html>
